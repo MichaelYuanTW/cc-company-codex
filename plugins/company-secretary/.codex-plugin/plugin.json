@@ -1,0 +1,40 @@
+{
+  "name": "company-secretary",
+  "version": "0.1.0",
+  "description": "A Codex-ready secretary office plugin for daily task capture, planning, notes, and department-style work routing.",
+  "author": {
+    "name": "OpenAI Codex Workspace",
+    "url": "https://github.com/Shin-sibainu/cc-company"
+  },
+  "homepage": "https://github.com/Shin-sibainu/cc-company",
+  "repository": "https://github.com/Shin-sibainu/cc-company",
+  "license": "MIT",
+  "keywords": [
+    "assistant",
+    "secretary",
+    "productivity",
+    "office",
+    "company"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Company Secretary",
+    "shortDescription": "A secretary-first office workflow adapted from cc-company for Codex.",
+    "longDescription": "Runs a lightweight office inside the current workspace. The secretary stays as the single front desk, keeps notes and todos, and suggests new departments only when repeated work patterns appear.",
+    "developerName": "OpenAI Codex Workspace",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Shin-sibainu/cc-company",
+    "privacyPolicyURL": "https://openai.com/policies/privacy-policy/",
+    "termsOfServiceURL": "https://openai.com/policies/terms-of-use/",
+    "defaultPrompt": [
+      "Open my secretary office and show today's priorities.",
+      "Capture this idea in the office inbox and suggest next steps.",
+      "Turn this request into the right office department workflow."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

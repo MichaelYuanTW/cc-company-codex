@@ -1,0 +1,20 @@
+{
+  "name": "local-workspace",
+  "interface": {
+    "displayName": "Local Workspace Plugins"
+  },
+  "plugins": [
+    {
+      "name": "company-secretary",
+      "source": {
+        "source": "local",
+        "path": "./plugins/company-secretary"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

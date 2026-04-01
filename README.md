@@ -1,122 +1,50 @@
-# cc-company
+# CC Company Codex
 
-Claude Code で仮想組織を構築・運営するプラグイン。
+Codex adaptation of [`Shin-sibainu/cc-company`](https://github.com/Shin-sibainu/cc-company).
 
-`/company` を実行すると、秘書があなた専用の窓口になります。3ステップで即運用開始。部署は使い方に合わせて自然に増えていきます。
+This repository converts the original Claude Code secretary-office plugin into a Codex-friendly workspace setup.
 
-## インストール
+## What it includes
 
-```
-/plugin marketplace add Shin-sibainu/cc-company
-/plugin install company@cc-company
-```
+- A Codex plugin at `plugins/company-secretary/`
+- A local marketplace entry at `.agents/plugins/marketplace.json`
+- A live office scaffold at `.company/`
+- Documentation describing the adaptation in `docs/cc-company-codex-adaptation.md`
 
-## コンセプト
+## Core idea
 
-```
-あなた → 秘書（窓口） → 各部署（必要に応じて追加）
-```
+The workflow is still:
 
-- **秘書**: 常に窓口。TODO管理、壁打ち、メモ、何でも相談OK
-- **部署**: 仕事が増えたら秘書が提案。リサーチ、PM、開発など
+`user -> secretary -> departments only when needed`
 
-最初は秘書だけ。シンプルに始めて、必要になったら部署を追加。
+The secretary remains the single front desk. The office starts small and grows only when repeated work patterns justify new departments.
 
-## 使い方
+## Main Codex changes
 
-### 初回セットアップ（3ステップ）
+- Replaced Claude-specific plugin structure with `.codex-plugin`
+- Replaced `CLAUDE.md` with `OFFICE.md`
+- Removed slash-command assumptions
+- Kept file-based office memory under `.company/`
 
-```
-> /company
+## Repository layout
 
-秘書: はじめまして！あなたの秘書になります。
-      まず、事業や活動を教えてください。
-あなた: フリーランスのWeb開発やってます
-
-秘書: 今の目標や困りごとは？
-あなた: SaaSを作って月10万目指してる。タスクが散らかるのが悩み
-
-→ .company/secretary/ が自動生成される（完了！）
-```
-
-### 日常の運営
-
-```
-> /company
-秘書: おはようございます！何かありますか？
-
-> 今日やること教えて
-秘書: 今日のTODOです:
-  - [ ] クライアントAへ見積もり送付
-  - [ ] LP設計書のレビュー
-
-> 競合サービスについて調べて
-秘書: 承知しました。調べますね。
-  → secretary/notes/2026-03-16-competitor-research.md に保存
-
-> 海外のトレンドも知りたい
-秘書: リサーチの依頼が増えていますね。
-      リサーチ部門を作りましょうか？
-あなた: 作って
-  → research/ が自動生成される
-```
-
-## 部署（必要に応じて追加）
-
-| 部署 | 担当領域 |
-|------|---------|
-| 秘書室 | TODO管理、壁打ち、メモ、相談（常設） |
-| PM | プロジェクト進捗、チケット管理 |
-| リサーチ | 市場調査、競合分析、技術調査 |
-| マーケティング | コンテンツ企画、SNS、キャンペーン |
-| 開発 | 技術ドキュメント、設計、デバッグ |
-| 経理 | 請求書、経費、売上管理 |
-| 営業 | クライアント管理、提案書 |
-| クリエイティブ | デザインブリーフ、ブランド管理 |
-| 人事 | 採用管理、チーム管理 |
-
-## 初期構成
-
-```
+```text
+.agents/plugins/marketplace.json
 .company/
-├── CLAUDE.md              ← 組織ルール
-└── secretary/
-    ├── CLAUDE.md           ← 秘書の振る舞い
-    ├── inbox/
-    ├── todos/
-    │   └── YYYY-MM-DD.md   ← 今日のTODO
-    └── notes/
+docs/
+plugins/company-secretary/
 ```
 
-## v1 からのアップグレード
+## Usage
 
-既存の v1 組織（CEO部門あり）がある場合、`/company` 実行時に自動でアップグレードを提案します。
+After loading this workspace in Codex, you can use natural language requests such as:
 
-- CEO部門 → 廃止（秘書が直接振り分け）
-- レビュー部門 → 廃止（秘書が管理）
-- 使用中の部署 → そのまま引き継ぎ
-- 空の部署 → 削除
+- open my secretary office
+- show today's tasks
+- capture this idea
+- help me draft a Japanese client email
+- brainstorm my game scenario
 
-## ファイル構成
+## Credits
 
-```
-cc-company/
-├── .claude-plugin/
-│   └── marketplace.json
-├── plugins/
-│   └── company/
-│       ├── .claude-plugin/
-│       │   └── plugin.json
-│       └── skills/
-│           └── company/
-│               ├── SKILL.md
-│               └── references/
-│                   ├── departments.md
-│                   └── claude-md-template.md
-├── README.md
-└── LICENSE
-```
-
-## ライセンス
-
-MIT
+Original concept and source structure by `Shin-sibainu/cc-company`.
